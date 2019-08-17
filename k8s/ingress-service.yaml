@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx # telling kubernetes create ingress controller based on ingress project
+    nginx.ingress.kubernetes.io/rewrite-target: /$1 # configure how copy of nginx behaves, if we match route then rewrite request
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /?(.*)
+            backend:
+              serviceName: fibonacci-client-ip-service
+              servicePort: 3000
+          - path: /api/?(.*)
+            backend:
+              serviceName: fibonacci-server-ip-service
+              servicePort: 5000

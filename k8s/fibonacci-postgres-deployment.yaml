@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fibonacci-postgres-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: postgres
+  template:
+    metadata:
+      labels:
+        component: postgres
+    spec:
+      volumes:
+        - name: postgress-storage
+          persistentVolumeClaim:
+            claimName: database-persistent-volume-claim # maps to name from claim config
+      containers:
+        - name: postgres
+          image: postgres
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: postgress-storage # maps to volumes listed above in spec
+              mountPath: /var/lib/postgresql/data
+              subPath: postgres # any data will be stored inside folder 
+          env:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name:  pgpassword
+                  key: PGPASSWORD
