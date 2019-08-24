@@ -30,7 +30,7 @@ before_install:
   # login to docker via cli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   # build a test image
-  - docker build -t guygaver/fibonacci-client-test -f ./client/Dockerfile.dev .
+  - docker build -t guygaver/fibonacci-client-test -f ./client/Dockerfile.dev ./client
 
 script:
   # run the tests in an image
