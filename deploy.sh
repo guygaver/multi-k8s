@@ -10,6 +10,6 @@ docker push guygaver/fibonacci-worker:latest
 docker push guygaver/fibonacci-worker:$SHA
 
 kubectl apply -f ./k8s
-kubectl set image deployments/fibonacci-client-deployment client=guygaver/fibonacci-client:$SHA
-kubectl set image deployments/fibonacci-server-deployment server=guygaver/fibonacci-server:$SHA
-kubectl set image deployments/fibonacci-worker-deployment worker=guygaver/fibonacci-worker:$SHA
+kubectl set image deployments/fibonacci-client-deployment fibonacci-client=guygaver/fibonacci-client:$SHA
+kubectl set image deployments/fibonacci-server-deployment fibonacci-server=guygaver/fibonacci-server:$SHA
+kubectl set image deployments/fibonacci-worker-deployment fibonacci-worker=guygaver/fibonacci-worker:$SHA
