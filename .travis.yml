@@ -22,6 +22,8 @@ before_install:
   - gcloud components update kubectl
   # equivalent to IAM system in AWS. Need to activate and pass credentials stored in file
   - gcloud auth activate-service-account --key-file service-account.json
+  # remove encrypted file after use
+  - rm -f service-account.json
   # set the project using the id from gcloud
   - gcloud config set project fibonacci-kubernetes-250120
   - gcloud config set compute/zone us-east1-c	
