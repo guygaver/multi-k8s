@@ -6,6 +6,6 @@
   - database and persistent volume claims
   - services and ingresses for networking
   - setting up TLS/SSL
-- CI/CD via TravisCI
+- CI/CD via TravisCI with master branch deployments to GKE
 - Dockerizing services
 - nginx reverse proxy configuration
