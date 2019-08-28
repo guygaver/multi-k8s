@@ -1,6 +1,6 @@
 # kubernetes doesnt contain Issuer type out of the box
 apiVersion: certmanager.k8s.io/v1alpha1
-type: ClusterIssuer
+kind: ClusterIssuer
 metadata:
   name: letsencrypt-prod
 spec:
