@@ -1,0 +1,13 @@
+# kubernetes doesnt contain Issuer type out of the box
+apiVersion: certmanager.k8s.io/v1alpha1
+type: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    # which server to reach out to for certificate
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: 'guygaver@gmail.com'
+    privateKeySecretRef: # not connected to cert secret, but cert verification process
+      name: letsencrypt-prod # maps to secret ref in Certificate.yaml
+    http01: {} # saying we want to use the http processes for obtaining certificate
